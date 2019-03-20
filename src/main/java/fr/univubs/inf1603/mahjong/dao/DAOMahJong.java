@@ -8,7 +8,7 @@ import java.util.UUID;
 import java.util.WeakHashMap;
 
 /**
- * La classe générique {@code DAOMahJong} est l'interface générale pour la gestion
+ * Cette classe générique répresente l'interface générale pour la gestion
  * des objets dans la solution de persistance. 
  * Elle définit les méthodes d'accès aux données.
  * Les objets montés en mémoire sont rangés dans un tableau associatif
@@ -44,8 +44,7 @@ public abstract class DAOMahJong<T> implements DAO<T> {
      */
     @Override
     final public void save(T object) throws DAOException {
-        object.getClass().getName();
-        checkNotNull("save : object", object);
+        checkNotNull("save -> object", object);
         UUID objectUUID = getObjectUUID(object);
         if (find(objectUUID) == null) {
             map.put(objectUUID, object);
@@ -60,7 +59,7 @@ public abstract class DAOMahJong<T> implements DAO<T> {
      */
     @Override
     final public T find(UUID uuid) throws DAOException {
-        checkNotNull("find : uuid", uuid);
+        checkNotNull("find -> uuid", uuid);
         T founded = map.get(uuid);
         if(founded == null) {
             founded = loadFromPersistance(uuid);
@@ -76,7 +75,7 @@ public abstract class DAOMahJong<T> implements DAO<T> {
      */
     @Override
     final public void delete(T object) throws DAOException {
-        checkNotNull("delete : object", object);
+        checkNotNull("delete -> object", object);
         deleteFromPersistance(object);
         if (map.containsValue(object)) {
             UUID objectUUID = getObjectUUID(object);
@@ -90,7 +89,7 @@ public abstract class DAOMahJong<T> implements DAO<T> {
      */
     @Override
     final public void delete(UUID uuid) throws DAOException {
-        checkNotNull("delete : uuid", uuid);
+        checkNotNull("delete -> uuid", uuid);
         T object = find(uuid);
         if(object != null) {
             delete(object);
@@ -110,9 +109,9 @@ public abstract class DAOMahJong<T> implements DAO<T> {
      * du principe que tous les objets à persister ont une méthode getUUID() qui
      * renvoie l'identifiant de l'objet en question.
      * 
-     * @param object Objet
+     * @param object Objet à persister
      * @return l'identifiant {@code UUID} de l'objet.
-     * @throws ClassNotFoundException si la classe de l'objet n'eest pas trouvé.
+     * @throws ClassNotFoundException si la classe de l'objet n'est pas trouvé.
      * @throws NoSuchMethodException si la méthode {code getUUID()} n'est pas trouvé
      * @throws IllegalArgumentException si le nombre d'argument est incorrect
      * @throws IllegalAccessException s'il ya un problème d'accès
@@ -138,9 +137,9 @@ public abstract class DAOMahJong<T> implements DAO<T> {
      * @param name nom de l'objet à tester
      * @param obj Objet à tester
      */
-    private void checkNotNull(String name, Object obj) {
+    private void checkNotNull(String name, Object obj) throws DAOException {
         if(obj == null) {
-            throw new IllegalArgumentException(name + " == null");
+            throw new DAOException(name + " == null");
         }
     }
     

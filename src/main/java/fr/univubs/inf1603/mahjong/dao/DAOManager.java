@@ -6,8 +6,9 @@ import fr.univubs.inf1603.mahjong.engine.Zone;
 import fr.univubs.inf1603.mahjong.sapi.Player;
 
 /**
- * L'interface {@code DAOManager} gère l'ensemble des DAO. Elle spécifie les 
- * méthodes pour acceder aux DAO.
+ * L'interface {@code DAOManager} gère l'ensemble des DAO. Elle définit les 
+ * méthodes qui permettent d'acceder aux DAO.
+ * 
  * @author aliyou
  * @version 1.0.0
  */

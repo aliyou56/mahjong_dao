@@ -4,7 +4,8 @@ package fr.univubs.inf1603.mahjong.dao;
 import java.util.UUID;
 
 /**
- *
+ * Juste pour tester.
+ * PAS INCLUS DANS LE MODULE.
  * @author aliyou
  */
 public interface AbstractTile {

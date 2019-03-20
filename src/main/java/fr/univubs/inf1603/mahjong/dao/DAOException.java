@@ -5,7 +5,7 @@ package fr.univubs.inf1603.mahjong.dao;
 /**
  * La classe {@code DAOException} régroupe les exceptions de la couche DAO.
  * 
- * @author Aliyou Sylla
+ * @author aliyou
  * @version 1.0.0
  */
 public class DAOException extends Exception {
