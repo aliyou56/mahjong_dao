@@ -1,8 +1,6 @@
 
-package fr.univubs.inf1603.mahjong.dao.myengine;
+package fr.univubs.inf1603.mahjong.dao.fake_engine;
 
-import fr.univubs.inf1603.mahjong.dao.MahJongObservable;
-import fr.univubs.inf1603.mahjong.engine.TileZoneException;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -12,13 +10,15 @@ import java.util.UUID;
  *
  * @author aliyou
  */
-public class TileZone extends Zone implements MahJongObservable {
+public class TileZone implements Zone {
 
     private final PropertyChangeSupport pcs;
+    
     private final UUID id;
     private final String name;
     private ArrayList<GameTile> tiles;
 //    private ArrayList<Zone> zones;
+    private ArrayList<Zone> zones;
 
     /**
      * The constructor of TileZone, the id is generate in the constructor
@@ -27,18 +27,17 @@ public class TileZone extends Zone implements MahJongObservable {
      * @param tiles The collection of tiles contains in this zone (cannot be
      * null)
      * @param zones The collection of zones contains in this zone (can be null)
-     * @throws TileZoneException if the collection of tiles is null
      */
-    public TileZone(String name, ArrayList<GameTile> tiles) throws TileZoneException { //, ArrayList<Zone> zones
-        this(UUID.randomUUID(), name, tiles); //zones
+    public TileZone(String name, ArrayList<GameTile> tiles, ArrayList<Zone> zones) {
+        this(UUID.randomUUID(), name, tiles, zones); 
     }
 
-    public TileZone(UUID uuid, String name, ArrayList<GameTile> tiles) throws TileZoneException { //, ArrayList<Zone> zones
+    public TileZone(UUID uuid, String name, ArrayList<GameTile> tiles, ArrayList<Zone> zones) {
         this.id = uuid;
         this.name = name;
 
         if (tiles == null) {
-            throw new TileZoneException("The collection of tiles cannot be null.");
+            throw new IllegalArgumentException("The collection of tiles cannot be null.");
         }
         this.tiles = tiles;
 
@@ -53,7 +52,7 @@ public class TileZone extends Zone implements MahJongObservable {
     /**
      * Returns the collection that contains the tiles
      *
-     * @return tiles
+     * @return tiles Tiles
      */
     public ArrayList<GameTile> getTilesCollection() {
         return this.tiles;
@@ -62,16 +61,16 @@ public class TileZone extends Zone implements MahJongObservable {
     /**
      * Returns the collection that contains the zones
      *
-     * @return zones
+     * @return zones Zones
      */
-//    public ArrayList<Zone> getZonesCollection() {
-//        return this.zones;
-//    }
+    public ArrayList<Zone> getZonesCollection() {
+        return this.zones;
+    }
 
     /**
      * Returns the id of the TileZone
      *
-     * @return id
+     * @return id ID
      */
     @Override
     public UUID getUUID() {
@@ -104,26 +103,31 @@ public class TileZone extends Zone implements MahJongObservable {
      * @param zone The zone we want to add
      * @return if the zone has been correctly added
      */
-//    public boolean addZone(Zone zone) {
-//        return this.zones.add(zone);
-//    }
+    public boolean addZone(Zone zone) {
+        return this.zones.add(zone);
+    }
 
     /**
      * Allows to remove a zone in the collection
      *
-     * @param listener
      * @param zone The zone we want to remove
      * @return if the zone has been correctly removed
      */
-//    public boolean removeZone(Zone zone) {
-//        return this.zones.remove(zone);
-//    }
+    public boolean removeZone(Zone zone) {
+        return this.zones.remove(zone);
+    }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.pcs.addPropertyChangeListener(listener);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         this.pcs.removePropertyChangeListener(listener);
@@ -131,7 +135,7 @@ public class TileZone extends Zone implements MahJongObservable {
 
     @Override
     public String toString() {
-        return "TileZone{" + "id=" + id + ", name=" + name + ", tiles=" + tiles + '}'; // ", zones=" + zones +
+        return "TileZone{" + "id=" + id + ", name=" + name + ", tiles=" + tiles +", zones=" + zones + '}'; 
     }
     
 }

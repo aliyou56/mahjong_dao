@@ -1,14 +1,15 @@
 package fr.univubs.inf1603.mahjong.dao;
 
-import fr.univubs.inf1603.mahjong.dao.myengine.GameTile;
-import fr.univubs.inf1603.mahjong.dao.myengine.Player;
-import fr.univubs.inf1603.mahjong.dao.myengine.Zone;
+import fr.univubs.inf1603.mahjong.dao.fake_engine.Game;
+import fr.univubs.inf1603.mahjong.dao.fake_engine.GameTile;
+import fr.univubs.inf1603.mahjong.dao.fake_engine.Player;
+import fr.univubs.inf1603.mahjong.dao.fake_engine.Zone;
 
 /**
  * L'interface <code>DAOManager</code> gère l'ensemble des DAO. Elle spécifie
  * les méthodes qui permettent d'acceder aux DAO.
  *
- * @author aliyou
+ * @author aliyou, faroud, louis, nesrine
  * @version 1.0.0
  */
 public interface DAOManager {
@@ -20,7 +21,7 @@ public interface DAOManager {
      * @throws DAOException s'il y'a une erreur lors de l'instanciation de
      * <code>GameDAO</code>.
      */
-    public DAO/*<Game>*/ getGameDao() throws DAOException;
+    public DAO<Game> getGameDao() throws DAOException;
 
     /**
      * Rétourne l'instance du DAO qui gère les zones <code>Zone</code>.

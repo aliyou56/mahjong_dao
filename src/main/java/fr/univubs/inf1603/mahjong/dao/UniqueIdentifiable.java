@@ -5,7 +5,7 @@ import java.util.UUID;
 
 /**
  *
- * @author aliyou
+ * @author aliyou, faroud, louis, nesrine
  */
 public interface UniqueIdentifiable {
     public UUID getUUID();

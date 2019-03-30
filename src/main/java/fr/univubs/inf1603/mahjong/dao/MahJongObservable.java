@@ -8,10 +8,10 @@ import java.beans.PropertyChangeListener;
  *
  * TOUTES LES CLASSES QUI SONT A PERSISTER DOIVENT IMPLEMENTER CETTE INTERFACE.
  *
- * @author aliyou
+ * @author aliyou, faroud, louis, nesrine
  * @version 1.0.0
  */
-public interface MahJongObservable extends UniqueIdentifiable {
+public interface MahJongObservable {
 
     /**
      * Ajoute un nouvel écouteur.

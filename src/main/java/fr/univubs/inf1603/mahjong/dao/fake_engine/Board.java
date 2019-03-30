@@ -1,5 +1,5 @@
 
-package fr.univubs.inf1603.mahjong.dao.myengine;
+package fr.univubs.inf1603.mahjong.dao.fake_engine;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,7 +1,7 @@
 
-package fr.univubs.inf1603.mahjong.dao.myengine;
+package fr.univubs.inf1603.mahjong.dao.fake_engine;
 
-import fr.univubs.inf1603.mahjong.dao.MahJongObservable;
+import fr.univubs.inf1603.mahjong.dao.Persistable;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.UUID;
@@ -10,7 +10,7 @@ import java.util.UUID;
  *
  * @author aliyou
  */
-public class Game implements MahJongObservable {
+public class Game implements Persistable {
 
     private final PropertyChangeSupport pcs;
     
@@ -18,12 +18,13 @@ public class Game implements MahJongObservable {
     Board board;
 //    Move lastMove;
     
-    Game(Board board) {
+    public Game(Board board) {
         this.uuid = UUID.randomUUID();
         this.board = board;
         this.pcs = new PropertyChangeSupport(this);
     }
 
+    @Override
     public UUID getUUID() {
         return uuid;
     }

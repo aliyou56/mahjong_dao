@@ -6,11 +6,11 @@ import java.util.UUID;
 /**
  * L'Interface <code>DAO</code> specifie les méthodes d'accès aux données.
  *
- * @author aliyou
+ * @author aliyou, faroud, louis, nesrine
  * @version 1.0.0
  * @param <T> Objet à persister
  */
-public interface DAO<T extends MahJongObservable> {
+public interface DAO<T> {
 
     /**
      * Persiste un object T dans la solution de persistance.
@@ -29,7 +29,7 @@ public interface DAO<T extends MahJongObservable> {
      * @return L'objet persisté s'il est rétrouvé sinon <code>null</code>.
      * @throws DAOException s'il y'a une erreur lors de la recherche.
      */
-    public MahJongObservable find(UUID objectID) throws DAOException;
+    public T find(UUID objectID) throws DAOException;
 
     /**
      * Retire un objet T persisté de la solution de persistance.

@@ -10,11 +10,11 @@ import java.util.WeakHashMap;
  * données. Les objets montés en mémoire sont rangés dans un tableau associatif
  * ayant comme clé l'identifiant <code>UUID</code>.
  *
- * @author aliyou
+ * @author aliyou, faroud, louis, nesrine
  * @version 1.0.0
  * @param <T> Objet à persister.
  */
-public abstract class DAOMahJong<T extends MahJongObservable> implements DAO<T> {
+public abstract class DAOMahJong<T extends Persistable> implements DAO<T> {
 
     /**
      * Tableau associatif contenant les objets T en mémoire.
