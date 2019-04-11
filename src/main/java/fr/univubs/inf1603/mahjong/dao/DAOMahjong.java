@@ -1,5 +1,6 @@
 package fr.univubs.inf1603.mahjong.dao;
 
+import fr.univubs.inf1603.mahjong.engine.persistence.Persistable;
 import java.util.List;
 import java.util.UUID;
 import java.util.WeakHashMap;
@@ -12,19 +13,19 @@ import java.util.WeakHashMap;
  *
  * @author aliyou, faroud, louis, nesrine
  * @version 1.0.0
- * @param <T> Objet à persister.
+ * @param <T> Objet <code>T</code> à persister.
  */
-public abstract class DAOMahJong<T extends Persistable> implements DAO<T> {
+public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
 
     /**
-     * Tableau associatif contenant les objets T en mémoire.
+     * Tableau associatif contenant les objets <code>T</code> en mémoire.
      */
     protected final WeakHashMap<UUID, T> map;
 
     /**
      * Constructeur vide.
      */
-    protected DAOMahJong() {
+    protected DAOMahjong() {
         map = new WeakHashMap();
     }
 
@@ -106,16 +107,16 @@ public abstract class DAOMahJong<T extends Persistable> implements DAO<T> {
     }
 
     /**
-     * Enregistre un objet T dans la solution de persistance.
+     * Enregistre un objet <code>T</code> dans la solution de persistance.
      *
-     * @param object Objet à persister.
+     * @param object Objet <code>T</code> à persister.
      * @throws DAOException s'il y'a une erreur lors de la sauvegarde.
      */
     protected abstract void writeToPersistance(T object) throws DAOException;
 
     /**
-     * Charge un objet T depuis la solution de persistance à l'aide de son
-     * identifiant <code>UUID</code>.
+     * Charge un objet <code>T</code> retrouvé à l'aide de son identifiant
+     * <code>objectID</code> depuis la solution de persistance
      *
      * @param objectID Identifiant de l'objet à retrouver.
      * @return L'objet T s'il est retrouvé sinon <code>null</code>.
@@ -124,18 +125,18 @@ public abstract class DAOMahJong<T extends Persistable> implements DAO<T> {
     protected abstract T loadFromPersistance(UUID objectID) throws DAOException;
 
     /**
-     * Supprimer un objet T de la solution de persistance.
+     * Supprimer un objet <code>T</code> de la solution de persistance.
      *
-     * @param object Objet à supprimer.
+     * @param object Objet <code>T</code> à supprimer.
      * @throws DAOException s'il y'a une erreur lors de la suppression.
      */
     protected abstract void deleteFromPersistance(T object) throws DAOException;
 
     /**
-     * Rétourne la liste de tous les objets T persistés dans la solution de
-     * persistance.
+     * Rétourne la liste de tous les objets <code>T</code> persistés dans la
+     * solution de persistance.
      *
-     * @return Liste de tous les objets T persistés.
+     * @return Liste de tous les objets <code>T</code> persistés.
      * @throws DAOException s'il y'a une erreur lors du chargement.
      */
     protected abstract List<T> laodAll() throws DAOException;

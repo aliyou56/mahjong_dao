@@ -1,9 +1,9 @@
 package fr.univubs.inf1603.mahjong.dao;
 
-import fr.univubs.inf1603.mahjong.dao.fake_engine.Game;
-import fr.univubs.inf1603.mahjong.dao.fake_engine.GameTile;
-import fr.univubs.inf1603.mahjong.dao.fake_engine.Player;
-import fr.univubs.inf1603.mahjong.dao.fake_engine.Zone;
+import fr.univubs.inf1603.mahjong.engine.game.Game;
+import fr.univubs.inf1603.mahjong.engine.game.GameTile;
+import fr.univubs.inf1603.mahjong.engine.game.TileZone;
+//import fr.univubs.inf1603.mahjong.sapi.Player;
 
 /**
  * L'interface <code>DAOManager</code> gère l'ensemble des DAO. Elle spécifie
@@ -24,13 +24,13 @@ public interface DAOManager {
     public DAO<Game> getGameDao() throws DAOException;
 
     /**
-     * Rétourne l'instance du DAO qui gère les zones <code>Zone</code>.
+     * Rétourne l'instance du DAO qui gère les zones <code>TileZone</code>.
      *
-     * @return L'instance du DAO qui gère les zonees <code>Zone</code>
+     * @return L'instance du DAO qui gère les zones <code>TileZone</code>
      * @throws DAOException s'il y'a une erreur lors de l'instanciation de
      * <code>ZoneDAO</code>.
      */
-    public DAO<Zone> getZoneDao() throws DAOException;
+    public DAO<TileZone> getZoneDao() throws DAOException;
 
     /**
      * Rétourne l'instance du DAO qui gère les tuiles <code>GameTile</code>.
@@ -48,5 +48,5 @@ public interface DAOManager {
      * @throws DAOException s'il y'a une erreur lors de l'instanciation de
      * <code>PlayerDAO</code>.
      */
-    public DAO<Player> getPlayerDao() throws DAOException;
+//    public DAO<Player> getPlayerDao() throws DAOException;
 }
