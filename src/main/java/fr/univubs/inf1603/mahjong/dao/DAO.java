@@ -5,58 +5,58 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * L'Interface <code>DAO</code> specifie les méthodes d'accès aux données.
+ * L'Interface {@code DAO} specifie les méthodes d'accès aux données.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.0.0
- * @param <T> Objet <code>T</code> à persister
+ * @version 1.0.1
+ * @param <T> Objet {@code T} à persister.
  */
 public interface DAO<T extends Persistable> {
 
     /**
-     * Persiste un object <code>T</code> dans la solution de persistance.
+     * Persiste un object {@code T} dans la solution de persistance.
      *
-     * @param object Objet <code>T</code> à persister. NE DOIT PAS ETRE NULL.
+     * @param object Objet {@code T} à persister. NE DOIT PAS ETRE NULL.
      * @throws DAOException s'il y'a une erreur lors de la persistance.
      */
     public void save(T object) throws DAOException;
 
     /**
-     * Rétourne un objet <code>T</code> persisté retrouvé à l'aide de son
-     * identifiant <code>UUID</code>.
+     * Rétourne un objet {@code T} persisté retrouvé à l'aide de son
+     * identifiant {@code UUID}.
      *
      * @param objectID Identifiant de l'objet à retrouver. NE DOIT PAS ETRE
      * NULL.
-     * @return L'objet <code>T</code> persisté s'il est rétrouvé sinon
-     * <code>null</code>.
+     * @return L'objet {@code T} persisté s'il est rétrouvé sinon
+     * {@code null}.
      * @throws DAOException s'il y'a une erreur lors de la recherche.
      */
     public T find(UUID objectID) throws DAOException;
 
     /**
-     * Retire un objet <code>T</code> persisté de la solution de persistance.
+     * Retire un objet {@code T} persisté de la solution de persistance.
      *
-     * @param object Objet <code>T</code> persisté à retirer. NE DOIT PAS ETRE
+     * @param object Objet {@code T} persisté à retirer. NE DOIT PAS ETRE
      * NULL.
      * @throws DAOException s'il y'a une erreur lors de la suppression.
      */
     public void delete(T object) throws DAOException;
 
     /**
-     * Retire un objet <code>T</code> persisté de la solution de persistance à
-     * l'aide de son identifiant <code>UUID</code>.
+     * Retire un objet {@code T} persisté de la solution de persistance à
+     * l'aide de son identifiant {@code UUID}.
      *
-     * @param objectID Identifiant de l'objet <code>T</code> persisté à retirer.
+     * @param objectID Identifiant de l'objet {@code T} persisté à retirer.
      * NE DOIT PAS ETRE NULL.
      * @throws DAOException s'il y'a une erreur lors de la suppression.
      */
     public void delete(UUID objectID) throws DAOException;
 
     /**
-     * Rétourne l'ensemble des objets <code>T</code> persistés dans la solution
+     * Rétourne l'ensemble des objets {@code T} persistés dans la solution
      * de persistance.
      *
-     * @return Liste de tous les objets <code>T</code> persistés.
+     * @return Liste de tous les objets {@code T} persistés.
      * @throws DAOException s'il y'a une erreur lors du chargement.
      */
     public List<T> findAll() throws DAOException;

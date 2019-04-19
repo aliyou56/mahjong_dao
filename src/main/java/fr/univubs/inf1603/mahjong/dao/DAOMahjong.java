@@ -12,7 +12,7 @@ import java.util.WeakHashMap;
  * ayant comme clé l'identifiant <code>UUID</code>.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.0.0
+ * @version 1.0.1
  * @param <T> Objet <code>T</code> à persister.
  */
 public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
@@ -34,13 +34,13 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
      */
     @Override
     final public void save(T object) throws DAOException {
-        checkNotNull("save -> observable", object);
+        checkNotNull("object", object);
         UUID objetcID = object.getUUID();
         if (find(object.getUUID()) == null) {
             map.put(objetcID, object);
             writeToPersistance(object);
         } else {
-            throw new DAOException("L'identifiant <" + objetcID + "> déjà dans la solution de persistance.");
+            throw new DAOException("L'identifiant <" + objetcID + "> existe déjà dans la solution de persistance.");
         }
     }
 
@@ -49,7 +49,7 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
      */
     @Override
     final public T find(UUID objectID) throws DAOException {
-        checkNotNull("find -> uuid", objectID);
+        checkNotNull("uuid", objectID);
         T founded = map.get(objectID);
         if (founded == null) {
             founded = loadFromPersistance(objectID);
@@ -65,7 +65,7 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
      */
     @Override
     final public void delete(T object) throws DAOException {
-        checkNotNull("delete -> object", object);
+        checkNotNull("object", object);
         deleteFromPersistance(object);
         if (map.containsValue(object)) {
             map.remove(object.getUUID());
@@ -78,7 +78,7 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
      */
     @Override
     final public void delete(UUID objectID) throws DAOException {
-        checkNotNull("delete -> objectID", objectID);
+        checkNotNull("objectID", objectID);
         T object = find(objectID);
         if (object != null) {
             delete(object);

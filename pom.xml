@@ -69,15 +69,21 @@
         </dependency>
         
         <dependency>
-            <groupId>fr.univubs.inf1603.mahjong</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>sapi</artifactId>
-            <version>1.2</version>
+            <version>1.2.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        
+
         <dependency>
-            <groupId>fr.univubs.inf1603.mahjong</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>engine</artifactId>
-            <version>0.5</version>
+            <version>0.5.1</version>
         </dependency>
         
     </dependencies>
