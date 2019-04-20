@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.univubs.inf1603.mahjong</groupId>
     <artifactId>dao</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -83,7 +83,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>engine</artifactId>
-            <version>0.5.1</version>
+            <version>0.5.3</version>
         </dependency>
         
     </dependencies>

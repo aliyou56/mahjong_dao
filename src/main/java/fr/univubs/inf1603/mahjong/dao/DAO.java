@@ -8,7 +8,7 @@ import java.util.UUID;
  * L'Interface {@code DAO} specifie les méthodes d'accès aux données.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.0.1
+ * @version 1.0.2
  * @param <T> Objet {@code T} à persister.
  */
 public interface DAO<T extends Persistable> {
@@ -22,7 +22,7 @@ public interface DAO<T extends Persistable> {
     public void save(T object) throws DAOException;
 
     /**
-     * Rétourne un objet {@code T} persisté retrouvé à l'aide de son
+     * Rémonte un objet {@code T} persisté retrouvé à l'aide de son
      * identifiant {@code UUID}.
      *
      * @param objectID Identifiant de l'objet à retrouver. NE DOIT PAS ETRE
@@ -53,7 +53,7 @@ public interface DAO<T extends Persistable> {
     public void delete(UUID objectID) throws DAOException;
 
     /**
-     * Rétourne l'ensemble des objets {@code T} persistés dans la solution
+     * Rémonte l'ensemble des objets {@code T} persistés dans la solution
      * de persistance.
      *
      * @return Liste de tous les objets {@code T} persistés.
