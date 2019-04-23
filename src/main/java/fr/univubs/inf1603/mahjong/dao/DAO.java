@@ -8,7 +8,7 @@ import java.util.UUID;
  * L'Interface {@code DAO} specifie les méthodes d'accès aux données.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.0.2
+ * @version 1.0.3
  * @param <T> Objet {@code T} à persister.
  */
 public interface DAO<T extends Persistable> {

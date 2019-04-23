@@ -10,7 +10,7 @@ import fr.univubs.inf1603.mahjong.sapi.Player;
  * les méthodes qui permettent d'acceder aux DAO.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.0.2
+ * @version 1.0.3
  */
 public interface DAOManager {
 

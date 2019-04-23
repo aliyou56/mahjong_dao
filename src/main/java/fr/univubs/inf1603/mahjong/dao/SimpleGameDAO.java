@@ -1,17 +1,16 @@
 package fr.univubs.inf1603.mahjong.dao;
 
 import fr.univubs.inf1603.mahjong.engine.game.Game;
+import fr.univubs.inf1603.mahjong.sapi.SapiManager;
 import fr.univubs.inf1603.mahjong.sapi.SimpleGame;
-import fr.univubs.inf1603.mahjong.sapi.impl.SimpleGameImpl;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Cette interface rajoute la méthode {@code loadPersistedNames} à l'interface
  * {@code DAO}.
  *
  * @author aliyou
- * @version 1.0.2
+ * @version 1.0.3
  */
 public interface SimpleGameDAO extends DAO<SimpleGame> {
 
@@ -32,4 +31,11 @@ public interface SimpleGameDAO extends DAO<SimpleGame> {
      * @throws DAOException s'il y'a une erreur lors de la persistance.
      */
     public void save(SimpleGame simpleGame, Game game) throws DAOException;
+    
+    /**
+     * Permet de passer la réference du SapiManager au DAO.
+     * 
+     * @param sp SapiManager
+     */
+    public void setSapiManager(SapiManager sp);
 }
