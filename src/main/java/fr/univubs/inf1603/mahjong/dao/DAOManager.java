@@ -1,7 +1,7 @@
 package fr.univubs.inf1603.mahjong.dao;
 
 import fr.univubs.inf1603.mahjong.engine.game.Game;
-import fr.univubs.inf1603.mahjong.engine.game.GameTile;
+import fr.univubs.inf1603.mahjong.engine.game.GameTileInterface;
 import fr.univubs.inf1603.mahjong.engine.game.TileZone;
 import fr.univubs.inf1603.mahjong.sapi.Player;
 
@@ -10,7 +10,7 @@ import fr.univubs.inf1603.mahjong.sapi.Player;
  * les méthodes qui permettent d'acceder aux DAO.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.0.3
+ * @version 1.1.0
  */
 public interface DAOManager {
 
@@ -39,7 +39,7 @@ public interface DAOManager {
      * @throws DAOException s'il y'a une erreur lors de l'instanciation de
      * <code>GameDAO</code>.
      */
-    public DAO<GameTile> getTileDao() throws DAOException;
+    public DAO<GameTileInterface> getTileDao() throws DAOException;
 
     /**
      * Rétourne l'instance du DAO qui gère les simple games {@code SimpleGame}.
