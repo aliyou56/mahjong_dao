@@ -3,14 +3,13 @@ package fr.univubs.inf1603.mahjong.dao;
 import fr.univubs.inf1603.mahjong.engine.game.Game;
 import fr.univubs.inf1603.mahjong.engine.game.GameTileInterface;
 import fr.univubs.inf1603.mahjong.engine.game.TileZone;
-import fr.univubs.inf1603.mahjong.sapi.Player;
 
 /**
  * L'interface <code>DAOManager</code> gère l'ensemble des DAO. Elle spécifie
  * les méthodes qui permettent d'acceder aux DAO.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.1.0
+ * @version 1.1.1
  */
 public interface DAOManager {
 
@@ -42,12 +41,12 @@ public interface DAOManager {
     public DAO<GameTileInterface> getTileDao() throws DAOException;
 
     /**
-     * Rétourne l'instance du DAO qui gère les simple games {@code SimpleGame}.
+     * Rétourne l'instance du DAO qui gère les objets {@code SapiGame}.
      *
-     * @return L'instance du DAO qui gère les simple games {@code SimpleGame}.
+     * @return L'instance du DAO qui gère les objets {@code SapiGame}.
      * @throws DAOException s'il y'a une erreur lors de l'instanciation.
      */
-    public SimpleGameDAO getSimpleGameDao() throws DAOException;
+    public SapiGameDAO getSapiGameDao() throws DAOException;
     
     /**
      * Rétourne l'instance du DAO qui gère les joueurs <code>Player</code>.
@@ -56,5 +55,5 @@ public interface DAOManager {
      * @throws DAOException s'il y'a une erreur lors de l'instanciation de
      * <code>PlayerDAO</code>.
      */
-    public DAO<Player> getPlayerDao() throws DAOException;
+//    public DAO<Player> getPlayerDao() throws DAOException;
 }

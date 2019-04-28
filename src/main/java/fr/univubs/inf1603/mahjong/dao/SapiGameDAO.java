@@ -1,18 +1,15 @@
 package fr.univubs.inf1603.mahjong.dao;
 
-import fr.univubs.inf1603.mahjong.engine.game.Game;
-import fr.univubs.inf1603.mahjong.sapi.SapiManager;
-import fr.univubs.inf1603.mahjong.sapi.SimpleGame;
+import fr.univubs.inf1603.mahjong.sapi.impl.SapiGame;
 import java.util.List;
 
 /**
- * Cette interface spécifie des méthodes pour la persistaence d'une vision simplifiée
- * d'une partie de Mahjong {@code SimpleGame}.
- *
+ * L'interface {@code SapiGame} rajoute deux méthodes à l'interface {@code DAO}.
+ * 
  * @author aliyou
- * @version 1.1.0
+ * @version 1.1.1
  */
-public interface SimpleGameDAO extends DAO<SimpleGame> {
+public interface SapiGameDAO extends DAO<SapiGame> {
 
     /**
      * Rémonte les noms de tous les objets {@code SimpleGame} persistés depuis
@@ -24,18 +21,27 @@ public interface SimpleGameDAO extends DAO<SimpleGame> {
     public List<String> loadPersistedNames() throws DAOException;
 
     /**
+     * Rémonte une partie de Mahjong à l'aide de son nom
+     * 
+     * @param gameName Nom d'une partie de Mahjong.
+     * @return SapiGame.
+     * @throws DAOException s'il y'a une erreur lors du chargement.
+     */
+    public SapiGame find(String gameName) throws DAOException;
+    
+    /**
      * Persiste une vision simplifiée d'une partie de Mahjong {@code SimpleGame}.
      *
      * @param simpleGame Une vision simplifiée d'une partie de Mahjong {@code SimpleGame}
      * @param game Une partie de Mahjong
      * @throws DAOException s'il y'a une erreur lors de la persistance.
      */
-    public void save(SimpleGame simpleGame, Game game) throws DAOException;
+//    public void save(SimpleGame simpleGame, Game game) throws DAOException;
     
     /**
      * Permet de passer la réference du SapiManager au DAO.
      * 
      * @param sapiManager Gestionnaire des Parties de Mahjong.
      */
-    public void setSapiManager(SapiManager sapiManager);
+//    public void setSapiManager(SapiManager sapiManager);
 }

@@ -12,7 +12,7 @@ import java.util.WeakHashMap;
  * ayant comme clé l'identifiant <code>UUID</code>.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.1.0
+ * @version 1.1.1
  * @param <T> Objet <code>T</code> à persister.
  */
 public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
