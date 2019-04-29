@@ -4,7 +4,7 @@ package fr.univubs.inf1603.mahjong.dao;
  * La classe <code>DAOException</code> régroupe les exceptions de la couche DAO.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.1.1
+ * @version 1.1.2
  */
 public class DAOException extends Exception {
 
@@ -29,7 +29,7 @@ public class DAOException extends Exception {
     /**
      * Constructeur avec le message et la cause de l'erreur.
      *
-     * @param message Message de l'erreur.
+     * @param message Message d'erreur.
      * @param throwable Cause de l'erreur.
      */
     public DAOException(String message, Throwable throwable) {

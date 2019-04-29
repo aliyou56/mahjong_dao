@@ -4,44 +4,50 @@ import fr.univubs.inf1603.mahjong.sapi.impl.SapiGame;
 import java.util.List;
 
 /**
- * L'interface {@code SapiGame} rajoute deux méthodes à l'interface {@code DAO}.
- * 
+ * L'interface {@code SapiGameDAO} spécifie les méthodes du {@code DAO} gérant
+ * la persistance des objets {@code SapiGame}.
+ *
  * @author aliyou
- * @version 1.1.1
+ * @version 1.1.2
  */
 public interface SapiGameDAO extends DAO<SapiGame> {
 
     /**
-     * Rémonte les noms de tous les objets {@code SimpleGame} persistés depuis
-     * la solution persistante.
+     * Rémonte les noms de l'ensemble des parties de Mahjong persistés depuis la
+     * solution persistante.
      *
-     * @return Noms de tous les objets {@code SimpleGame} persistés.
+     * @return Liste des noms des parties de Mahjong persistés.
      * @throws DAOException s'il y'a une erreur lors du chargement.
      */
     public List<String> loadPersistedNames() throws DAOException;
 
     /**
-     * Rémonte une partie de Mahjong à l'aide de son nom
-     * 
-     * @param gameName Nom d'une partie de Mahjong.
-     * @return SapiGame.
+     * Rémonte une partie de Mahjong, depuis la solution de persistance,
+     * rétrouvée à l'aide de son nom.
+     *
+     * @param gameName Nom d'une partie de Mahjong à remonter. NE DOIT PAS ETRE
+     * NULL.
+     * @return l'objet {@code SapiGame} contenant la partie de Mahjong.
      * @throws DAOException s'il y'a une erreur lors du chargement.
      */
     public SapiGame find(String gameName) throws DAOException;
-    
+
     /**
-     * Persiste une vision simplifiée d'une partie de Mahjong {@code SimpleGame}.
+     * Supprime une partie de Mahjong de la solution de persistance rétrouvée à
+     * l'aide de son nom.
      *
-     * @param simpleGame Une vision simplifiée d'une partie de Mahjong {@code SimpleGame}
-     * @param game Une partie de Mahjong
-     * @throws DAOException s'il y'a une erreur lors de la persistance.
+     * @param gameName Nom de la partie de Mahjong à supprimer. NE DOIT PAS ETRE
+     * NULL.
+     * @throws DAOException s'il y'a une erreur lors de la suppression.
      */
-//    public void save(SimpleGame simpleGame, Game game) throws DAOException;
-    
-    /**
-     * Permet de passer la réference du SapiManager au DAO.
-     * 
-     * @param sapiManager Gestionnaire des Parties de Mahjong.
-     */
-//    public void setSapiManager(SapiManager sapiManager);
+    default public void delete(String gameName) throws DAOException {
+        if (gameName == null) {
+            throw new DAOException("gameName == null");
+        }
+        SapiGame game = find(gameName);
+        if (game != null) {
+            delete(game);
+        }
+    }
+
 }
