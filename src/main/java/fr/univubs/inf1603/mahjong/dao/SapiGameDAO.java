@@ -2,13 +2,14 @@ package fr.univubs.inf1603.mahjong.dao;
 
 import fr.univubs.inf1603.mahjong.sapi.impl.SapiGame;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * L'interface {@code SapiGameDAO} spécifie les méthodes du {@code DAO} gérant
  * la persistance des objets {@code SapiGame}.
  *
  * @author aliyou
- * @version 1.1.2
+ * @version 1.1.4
  */
 public interface SapiGameDAO extends DAO<SapiGame> {
 
@@ -21,6 +22,13 @@ public interface SapiGameDAO extends DAO<SapiGame> {
      */
     public List<String> loadPersistedNames() throws DAOException;
 
+    /**
+     * Renvoie la liste des identifiants des parties persistées.
+     * @return Liste des identifiants des parties persistées.
+     * @throws DAOException s'il y'a une erreur lors du chargement.
+     */
+    public List<UUID> loadPersistedUUIDs() throws DAOException;
+    
     /**
      * Rémonte une partie de Mahjong, depuis la solution de persistance,
      * rétrouvée à l'aide de son nom.
