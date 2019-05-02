@@ -12,7 +12,7 @@ import java.util.WeakHashMap;
  * ayant comme clé l'identifiant <code>UUID</code>.
  *
  * @author aliyou, faroud, louis, nesrine
- * @version 1.1.4
+ * @version 1.2.0
  * @param <T> Objet <code>T</code> à persister.
  */
 public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
@@ -38,7 +38,7 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
         UUID objetcID = object.getUUID();
         if (find(object.getUUID()) == null) {
             map.put(objetcID, object);
-            writeToPersistance(object);
+            writeToPersistence(object);
         } else {
             throw new DAOException("L'identifiant <" + objetcID + "> existe déjà dans la solution de persistance.");
         }
@@ -52,7 +52,7 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
         checkNotNull("uuid", objectID);
         T founded = map.get(objectID);
         if (founded == null) {
-            founded = loadFromPersistance(objectID);
+            founded = loadFromPersistence(objectID);
             if (founded != null) {
                 map.put(objectID, founded);
             }
@@ -66,7 +66,7 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
     @Override
     final public void delete(T object) throws DAOException {
         checkNotNull("object", object);
-        deleteFromPersistance(object);
+        deleteFromPersistence(object);
         if (map.containsValue(object)) {
             map.remove(object.getUUID());
         }
@@ -95,7 +95,7 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
 
     /**
      * Vérifie si un objet est null ou pas. Lève une exception de type
-     * <code>IllegalArgumentException</code> si l'ojet est <code>null</code>.
+     * <code>DAOException</code> si l'ojet est <code>null</code>.
      *
      * @param name Nom de l'objet à tester.
      * @param obj Objet à tester.
@@ -112,7 +112,7 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
      * @param object Objet <code>T</code> à persister.
      * @throws DAOException s'il y'a une erreur lors de la sauvegarde.
      */
-    protected abstract void writeToPersistance(T object) throws DAOException;
+    protected abstract void writeToPersistence(T object) throws DAOException;
 
     /**
      * Charge un objet <code>T</code> retrouvé à l'aide de son identifiant
@@ -122,15 +122,15 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
      * @return L'objet T s'il est retrouvé sinon <code>null</code>.
      * @throws DAOException s'il y'a une erreur lors du chargement.
      */
-    protected abstract T loadFromPersistance(UUID objectID) throws DAOException;
+    protected abstract T loadFromPersistence(UUID objectID) throws DAOException;
 
     /**
-     * Supprimer un objet <code>T</code> de la solution de persistance.
+     * Supprime un objet <code>T</code> de la solution de persistance.
      *
      * @param object Objet <code>T</code> à supprimer.
      * @throws DAOException s'il y'a une erreur lors de la suppression.
      */
-    protected abstract void deleteFromPersistance(T object) throws DAOException;
+    protected abstract void deleteFromPersistence(T object) throws DAOException;
 
     /**
      * Rétourne la liste de tous les objets <code>T</code> persistés dans la
