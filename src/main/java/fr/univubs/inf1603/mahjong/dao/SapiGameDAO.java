@@ -53,9 +53,10 @@ public interface SapiGameDAO extends DAO<SapiGame> {
             throw new DAOException("gameName == null");
         }
         SapiGame game = find(gameName);
-        if (game != null) {
-            delete(game);
+        if (game == null) {
+            throw new DAOException("Game (name= "+gameName+") not found in persistence.");
         }
+        delete(game);
     }
 
 }
