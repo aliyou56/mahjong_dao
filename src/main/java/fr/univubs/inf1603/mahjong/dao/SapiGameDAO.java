@@ -9,7 +9,7 @@ import java.util.UUID;
  * la persistance des objets {@code SapiGame}.
  *
  * @author aliyou
- * @version 1.2.0
+ * @version 1.2.1
  */
 public interface SapiGameDAO extends DAO<SapiGame> {
 

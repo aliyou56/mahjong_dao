@@ -35,12 +35,12 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
     @Override
     final public void save(T object) throws DAOException {
         checkNotNull("object", object);
-        UUID objetcID = object.getUUID();
-        if (find(object.getUUID()) == null) {
-            map.put(objetcID, object);
+        UUID objectID = object.getUUID();
+        if (find(objectID) == null) {
+            map.put(objectID, object);
             writeToPersistence(object);
         } else {
-            throw new DAOException("L'identifiant <" + objetcID + "> existe déjà dans la solution de persistance.");
+            throw new DAOException("L'identifiant <" + objectID + "> existe déjà dans la solution de persistance.");
         }
     }
 
@@ -50,14 +50,14 @@ public abstract class DAOMahjong<T extends Persistable> implements DAO<T> {
     @Override
     final public T find(UUID objectID) throws DAOException {
         checkNotNull("uuid", objectID);
-        T founded = map.get(objectID);
-        if (founded == null) {
-            founded = loadFromPersistence(objectID);
-            if (founded != null) {
-                map.put(objectID, founded);
+        T found = map.get(objectID); 
+        if (found == null) {
+            found = loadFromPersistence(objectID);
+            if (found != null) {
+                map.put(objectID, found);
             }
         }
-        return founded;
+        return found;
     }
 
     /**
